@@ -1,10 +1,11 @@
 Fast run:<br>
-composer Update
+composer i<br>
+composer Update<br>
 then:<br>
-cp .env.example .env
+cp .env.example .env<br>
+then:<br><br>
+php artisan key:generate<br>
 then:<br>
-php artisan key:generate
+npm i<br>
 then:<br>
-npm i
-then:<br>
-npm run dev
+npm run dev<br>

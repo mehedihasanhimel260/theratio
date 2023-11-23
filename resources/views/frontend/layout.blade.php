@@ -1,34 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 @include('frontend.inc.head')
 
-<body id="homepage">
-
-    <div id="wrapper">
-
-        <!-- header begin -->
+<body class="royal_preloader">
+    <div id="page" class="site">
         @include('frontend.inc.header')
-        <!-- header close -->
 
+        @yield('content')
 
-        <!-- content begin -->
-        <div id="content" class="no-bottom no-top">
+        @include('frontend.inc.footer')
+    </div><!-- #page -->
+    <a id="back-to-top" href="#" class="show"><i class="ot-flaticon-left-arrow"></i></a>
 
-            @yield('content')
+    <!-- jQuery -->
 
-            <!-- footer begin -->
-            @include('frontend.inc.footer')
-            <!-- footer close -->
-        </div>
-    </div>
-
-
-
-    <!-- Javascript Files-->
     @include('frontend.inc.script')
 
 </body>
 
-
 </html>
+
+
