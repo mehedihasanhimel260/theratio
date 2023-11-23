@@ -74,7 +74,7 @@ class TeamController extends Controller
             @unlink($del_image); //image delete form the local folder backend/team/ path
             $image = $request->file('image');
             $image_name = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(300, 300)->save('backend/team/' . $image_name);
+            Image::make($image)->save('backend/team/' . $image_name);
             $image_url = 'backend/team/' . $image_name;
 
             $data['image'] = $image_url;
