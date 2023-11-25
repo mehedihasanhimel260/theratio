@@ -144,7 +144,7 @@ class TeamController extends Controller
         Team::findOrFail($id)->update(['status' => '1']);
         return redirect()->back();
     }
-    // team status active inactive method end ------------
+    
 
 
 }

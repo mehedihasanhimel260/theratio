@@ -2,7 +2,7 @@
 @section('content')
     <div id="content" class="site-content">
         @include('frontend.home.inc.revolution-slider')
-        <section class="story-1">
+        {{-- <section class="story-1">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-md-12">
@@ -22,7 +22,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
         <section class="about-1">
             <div class="grid-lines grid-lines-vertical">
                 <span class="g-line-vertical line-left color-line-default"></span>
@@ -33,21 +33,20 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-12 mb-5 mb-lg-0">
                         <div class="about-img-1">
-                            <img src="{{ asset('frontend/assets') }}/images/image2-home1.png" alt="">
+                            <img src="{{ asset($about->main_image) }}" alt="">
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12 align-self-center">
                         <div class="about-content-1 ml-xl-70">
                             <div class="ot-heading is-dots">
                                 <span>[ about company ]</span>
-                                <h2 class="main-heading">From Sketch to Life</h2>
+                                <h2 class="main-heading">{{ $about->title_english }}</h2>
                             </div>
-                            <p>The basic philosophy of our studio is to create individual, aesthetically stunning
-                                solutions for our customers by lightning-fast development of projects employing
-                                unique styles and architecture. Even if you don’t have a ready sketch of what you
-                                want – we will help you to get the result you dreamed of.</p>
+                            <p>
+                                {!! $about->details_1_eng !!}
+                            </p>
                             <div class="ot-button">
-                                <a href="portfolio-masonry.html" class="octf-btn octf-btn-dark">View Projects</a>
+                                <a href="{{ route('about.details') }}" class="octf-btn octf-btn-dark">View About Us</a>
                             </div>
                         </div>
                     </div>
@@ -59,54 +58,12 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="clients-slide owl-theme owl-carousel">
-                            <div class="img-item">
-                                <figure><img src="{{ asset('frontend/assets') }}/images/client01.svg" alt="">
-                                </figure>
-                            </div>
-                            <div class="img-item">
-                                <figure><img src="{{ asset('frontend/assets') }}/images/client02.svg" alt="">
-                                </figure>
-                            </div>
-                            <div class="img-item">
-                                <figure><img src="{{ asset('frontend/assets') }}/images/client03.svg" alt="">
-                                </figure>
-                            </div>
-                            <div class="img-item">
-                                <figure><img src="{{ asset('frontend/assets') }}/images/client04.svg" alt="">
-                                </figure>
-                            </div>
-                            <div class="img-item">
-                                <figure><img src="{{ asset('frontend/assets') }}/images/client05.svg" alt="">
-                                </figure>
-                            </div>
-                            <div class="img-item">
-                                <figure><img src="{{ asset('frontend/assets') }}/images/client06.svg" alt="">
-                                </figure>
-                            </div>
-                            <div class="img-item">
-                                <figure><img src="{{ asset('frontend/assets') }}/images/client01.svg" alt="">
-                                </figure>
-                            </div>
-                            <div class="img-item">
-                                <figure><img src="{{ asset('frontend/assets') }}/images/client02.svg" alt="">
-                                </figure>
-                            </div>
-                            <div class="img-item">
-                                <figure><img src="{{ asset('frontend/assets') }}/images/client03.svg" alt="">
-                                </figure>
-                            </div>
-                            <div class="img-item">
-                                <figure><img src="{{ asset('frontend/assets') }}/images/client04.svg" alt="">
-                                </figure>
-                            </div>
-                            <div class="img-item">
-                                <figure><img src="{{ asset('frontend/assets') }}/images/client05.svg" alt="">
-                                </figure>
-                            </div>
-                            <div class="img-item">
-                                <figure><img src="{{ asset('frontend/assets') }}/images/client06.svg" alt="">
-                                </figure>
-                            </div>
+                            @foreach ($brands as $brand)
+                                <div class="img-item">
+                                    <figure><img src="{{ asset($brand->image) }}" alt="">
+                                    </figure>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -177,49 +134,35 @@
                     </div>
                 </div>
                 <div class="row justify-content-center">
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div
-                            class="icon-box icon-box--bg-img icon-box--icon-top icon-box--is-line-hover icon-bg-1 text-center">
-                            <div class="icon-main"><img src="{{ asset('frontend/assets') }}/images/iconbox1.2.png"
-                                    alt="">
-                            </div>
-                            <div class="content-box">
-                                <h5><a href="servcies-detail-1.html">Design & Planning</a></h5>
-                                <p>We will help you to get the result you dreamed of.</p>
-                            </div>
-                            <div class="link-box">
-                                <a href="servcies-detail-1.html" class="btn-details">READ MORE</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div
-                            class="icon-box icon-box--bg-img icon-box--icon-top icon-box--is-line-hover icon-bg-2 text-center">
-                            <div class="icon-main"><img src="{{ asset('frontend/assets') }}/images/iconbox2.png"
-                                    alt=""></div>
-                            <div class="content-box">
-                                <h5><a href="servcies-detail-1.html">Custom Solutions</a></h5>
-                                <p>Individual, aesthetically stunning solutions for customers.</p>
-                            </div>
-                            <div class="link-box">
-                                <a href="servcies-detail-1.html" class="btn-details">READ MORE</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div
-                            class="icon-box icon-box--bg-img icon-box--icon-top icon-box--is-line-hover icon-bg-3 text-center">
-                            <div class="icon-main"><img src="{{ asset('frontend/assets') }}/images/iconbox3.png"
-                                    alt=""></div>
-                            <div class="content-box">
-                                <h5><a href="servcies-detail-1.html">Furniture & Decor</a></h5>
-                                <p>We create and produce our product design lines.</p>
-                            </div>
-                            <div class="link-box">
-                                <a href="servcies-detail-1.html" class="btn-details">READ MORE</a>
+                    @foreach ($services as $service)
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div
+                                class="icon-box icon-box--bg-img icon-box--icon-top icon-box--is-line-hover icon-bg-1 text-center">
+                                <div class="icon-main"><img src="{{ asset($service->main_image) }}"
+                                        style="border-radius: 25px" alt="">
+                                </div>
+                                <div class="content-box">
+                                    <h5><a href="servcies-detail-1.html">{{ $service->title_english }}</a></h5>
+                                    <p>
+                                        @if (strlen($service->des_sm_eng) > 10)
+                                            @php
+                                                preg_match('/^([\w\W\s]+?\s+){10}/', $service->des_sm_eng, $matches);
+                                            @endphp
+                                            {!! $matches[0] !!}
+                                        @else
+                                            {!! $service->des_sm_eng !!}
+                                        @endif
+
+
+                                    </p>
+                                </div>
+                                <div class="link-box">
+                                    <a href="{{ route('service.details', $service->id) }}" class="btn-details">READ MORE</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
+
                     <div class="space-120"></div>
                 </div>
                 <div class="row">
@@ -227,40 +170,44 @@
                         <div class="ot-counter">
                             <div>
                                 <span>[</span>
-                                <span class="num" data-to="180" data-time="2000">180</span>
+                                <span class="num" data-to="{{ $projects_don->value_1 }}"
+                                    data-time="2000">{{ $projects_don->value_1 }}</span>
                                 <span>+]</span>
                             </div>
-                            <h6>Current Clients</h6>
+                            <h6>{{ $projects_don->title_english_1 }}</h6>
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 mb-4 mb-xl-0">
                         <div class="ot-counter">
                             <div>
                                 <span>[</span>
-                                <span class="num" data-to="10" data-time="2000">10</span>
+                                <span class="num" data-to="{{ $projects_don->value_2 }}"
+                                    data-time="2000">{{ $projects_don->value_2 }}</span>
                                 <span>+]</span>
                             </div>
-                            <h6>years of experience</h6>
+                            <h6>{{ $projects_don->title_english_2 }}</h6>
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 mb-4 mb-sm-0">
                         <div class="ot-counter">
                             <div>
                                 <span>[</span>
-                                <span class="num" data-to="35" data-time="2000">35</span>
+                                <span class="num" data-to="{{ $projects_don->value_3 }}"
+                                    data-time="2000">{{ $projects_don->value_3 }}</span>
                                 <span>+]</span>
                             </div>
-                            <h6>awards winning</h6>
+                            <h6>{{ $projects_don->title_english_3 }}</h6>
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
                         <div class="ot-counter">
                             <div>
                                 <span>[</span>
-                                <span class="num" data-to="5" data-time="2000">5</span>
+                                <span class="num" data-to="{{ $projects_don->value_4 }}"
+                                    data-time="2000">{{ $projects_don->value_4 }}</span>
                                 <span>+]</span>
                             </div>
-                            <h6>Offices Worldwide</h6>
+                            <h6>{{ $projects_don->title_english_4 }}</h6>
                         </div>
                     </div>
                 </div>
@@ -269,141 +216,59 @@
         <section class="p-0">
             <div class="projects-grid pf_4_cols style-2 p-info-s2 img-scale w-auto no-gaps mx-0">
                 <div class="grid-sizer"></div>
-                <div class="project-item category-19 thumb2x">
-                    <div class="projects-box">
-                        <div class="projects-thumbnail">
-                            <a href="portfolio-standar.html">
-                                <img src="{{ asset('frontend/assets') }}/images/projects-grid/project-metro1.jpg"
-                                    alt="">
-                            </a>
-                            <div class="overlay">
-                                <h5>Stylish Family Appartment</h5>
-                                <i class="ot-flaticon-add"></i>
+                @foreach ($projects as $project)
+                    @if ($loop->iteration == 1 || $loop->iteration == 6 ? 'thumb2x' : '')
+                        <div class="project-item  category-14 thumb2x">
+                            <div class="projects-box">
+                                <div class="projects-thumbnail ">
+                                    <a href="portfolio-standar.html">
+                                        <img src="{{ asset('frontend/assets') }}/images/projects-grid/project-metro1.jpg"
+                                            alt="">
+                                    </a>
+                                    <div class="overlay">
+                                        <h5>Stylish Family Appartment</h5>
+                                        <i class="ot-flaticon-add"></i>
+                                    </div>
+                                </div>
+                                <div class="portfolio-info">
+                                    <div class="portfolio-info-inner">
+                                        <h5><a class="title-link" href="portfolio-standar.html">Stylish Family
+                                                Appartment</a></h5>
+                                        <p class="portfolio-cates"><a href="#">Interior</a></p>
+                                    </div>
+                                    <a class="overlay" href="portfolio-standar.html"></a>
+                                </div>
                             </div>
                         </div>
-                        <div class="portfolio-info">
-                            <div class="portfolio-info-inner">
-                                <h5><a class="title-link" href="portfolio-standar.html">Stylish Family
-                                        Appartment</a></h5>
-                                <p class="portfolio-cates"><a href="#">Interior</a></p>
-                            </div>
-                            <a class="overlay" href="portfolio-standar.html"></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-item category-14 ">
-                    <div class="projects-box">
-                        <div class="projects-thumbnail">
-                            <a href="portfolio-detail-slider.html">
-                                <img src="{{ asset('frontend/assets') }}/images/projects-grid/project2.jpg"
-                                    alt="">
-                            </a>
-                            <div class="overlay">
-                                <h5>Minimal Guests House</h5>
-                                <i class="ot-flaticon-add"></i>
-                            </div>
-                        </div>
-                        <div class="portfolio-info">
-                            <div class="portfolio-info-inner">
-                                <h5><a class="title-link" href="portfolio-detail-slider.html">Minimal Guests
-                                        House</a></h5>
-                                <p class="portfolio-cates">
-                                    <a href="#">Decor</a>
-                                    <a href="#">Interior</a>
-                                </p>
-                            </div>
-                            <a class="overlay" href="portfolio-detail-slider.html"></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-item category-15 ">
-                    <div class="projects-box">
-                        <div class="projects-thumbnail">
-                            <a href="portfolio-left.html">
-                                <img src="{{ asset('frontend/assets') }}/images/projects-grid/project3.jpg"
-                                    alt="">
-                            </a>
-                            <div class="overlay">
-                                <h5>Art Family Residence</h5>
-                                <i class="ot-flaticon-add"></i>
+                    @else
+                        <div class="project-item category-14 ">
+                            <div class="projects-box ">
+                                <div class="projects-thumbnail">
+                                    <a href="portfolio-detail-slider.html">
+                                        <img src="{{ asset('frontend/assets') }}/images/projects-grid/project-metro1.jpg"
+                                            style="height: 476px;" alt="">
+                                    </a>
+                                    <div class="overlay">
+                                        <h5>Minimal Guests House</h5>
+                                        <i class="ot-flaticon-add"></i>
+                                    </div>
+                                </div>
+                                <div class="portfolio-info">
+                                    <div class="portfolio-info-inner">
+                                        <h5><a class="title-link" href="portfolio-detail-slider.html">Minimal Guests
+                                                House</a></h5>
+                                        <p class="portfolio-cates">
+                                            <a href="#">Decor</a>
+                                            <a href="#">Interior</a>
+                                        </p>
+                                    </div>
+                                    <a class="overlay" href="portfolio-detail-slider.html"></a>
+                                </div>
                             </div>
                         </div>
-                        <div class="portfolio-info">
-                            <div class="portfolio-info-inner">
-                                <h5><a class="title-link" href="portfolio-left.html">Art Family Residence</a></h5>
-                                <p class="portfolio-cates"><a href="#">Architecture</a></p>
-                            </div>
-                            <a class="overlay" href="portfolio-left.html"></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-item category-20 ">
-                    <div class="projects-box">
-                        <div class="projects-thumbnail">
-                            <a href="portfolio-right.html">
-                                <img src="{{ asset('frontend/assets') }}/images/projects-grid/project4.jpg"
-                                    alt="">
-                            </a>
-                            <div class="overlay">
-                                <h5>Private House in Spain</h5>
-                                <i class="ot-flaticon-add"></i>
-                            </div>
-                        </div>
-                        <div class="portfolio-info">
-                            <div class="portfolio-info-inner">
-                                <h5><a class="title-link" href="portfolio-right.html">Private House in Spain</a>
-                                </h5>
-                                <p class="portfolio-cates"><a href="#">Furniture</a></p>
-                            </div>
-                            <a class="overlay" href="portfolio-right.html"></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-item category-19 ">
-                    <div class="projects-box">
-                        <div class="projects-thumbnail">
-                            <a href="portfolio-small.html">
-                                <img src="{{ asset('frontend/assets') }}/images/projects-grid/project5.jpg"
-                                    alt="">
-                            </a>
-                            <div class="overlay">
-                                <h5>Modern Villa in Belgium</h5>
-                                <i class="ot-flaticon-add"></i>
-                            </div>
-                        </div>
-                        <div class="portfolio-info">
-                            <div class="portfolio-info-inner">
-                                <h5><a class="title-link" href="portfolio-small.html">Modern Villa in Belgium</a>
-                                </h5>
-                                <p class="portfolio-cates"><a href="#">Furniture</a></p>
-                            </div>
-                            <a class="overlay" href="portfolio-small.html"></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-item category-14 thumb2x">
-                    <div class="projects-box">
-                        <div class="projects-thumbnail">
-                            <a href="portfolio-big.html">
-                                <img src="{{ asset('frontend/assets') }}/images/projects-grid/project-metro2.jpg"
-                                    alt="">
-                            </a>
-                            <div class="overlay">
-                                <h5>Minimalistic Style Appartment</h5>
-                                <i class="ot-flaticon-add"></i>
-                            </div>
-                        </div>
-                        <div class="portfolio-info">
-                            <div class="portfolio-info-inner">
-                                <h5><a class="title-link" href="portfolio-big.html">Minimalistic Style
-                                        Appartment</a></h5>
-                                <p class="portfolio-cates"><a href="#">Furniture</a><a href="#">interior</a>
-                                </p>
-                            </div>
-                            <a class="overlay" href="portfolio-big.html"></a>
-                        </div>
-                    </div>
-                </div>
+                    @endif
+                @endforeach
+
             </div>
         </section>
         <section class="cta">
@@ -417,7 +282,7 @@
                     </div>
                     <div class="col-lg-4 text-left text-lg-right align-self-center">
                         <div class="ot-button">
-                            <a href="contact.html" class="octf-btn octf-btn-light border-hover-light">get in
+                            <a href="{{ route('contact.us') }}" class="octf-btn octf-btn-light border-hover-light">get in
                                 touch</a>
                         </div>
                     </div>
@@ -491,110 +356,58 @@
                     </div>
                     <div class="col-lg-4 col-md-12 text-lg-right align-self-center">
                         <div class="ot-button">
-                            <a href="blog.html" class="octf-btn octf-btn-dark border-hover-dark">View all</a>
+                            <a href="{{ route('all.blogs.list') }}" class="octf-btn octf-btn-dark border-hover-dark">View
+                                all</a>
                         </div>
                     </div>
                 </div>
                 <div class="row justify-content-center">
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="post-box masonry-post post-item">
-                            <div class="post-inner">
-                                <div class="entry-media post-cat-abs">
-                                    <a href="post.html"><img src="{{ asset('frontend/assets') }}/images/blog/grid1.jpg"
-                                            alt=""></a>
-                                    <div class="post-cat">
-                                        <div class="posted-in"><a href="#">Interior</a></div>
+                    @foreach ($blogs as $blog)
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="post-box masonry-post post-item">
+                                <div class="post-inner">
+                                    <div class="entry-media post-cat-abs">
+                                        <a href="{{ route('blog.details', $blog->id) }}"><img
+                                                src="{{ asset($blog->main_image) }}" alt=""></a>
+                                        <div class="post-cat">
+                                            <div class="posted-in"><a href="#">
+                                                    {{-- CategoryName Interior --}}
+                                                </a></div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="inner-post">
-                                    <div class="entry-header">
-                                        <div class="entry-meta">
-                                            <span class="posted-on"><a href="#">March 19, 2020</a></span>
-                                            <span class="byline">
-                                                <span class="author vcard"><a class="url fn n" href="#">Tom
-                                                        Black</a></span>
-                                            </span>
-                                        </div><!-- .entry-meta -->
+                                    <div class="inner-post">
+                                        <div class="entry-header">
+                                            <div class="entry-meta">
+                                                <span class="posted-on"><a href="#">
+                                                        {{ $blog->created_at->format('F j, Y') }}</a></span>
+                                                <span class="byline">
+                                                    <span class="author vcard"><a class="url fn n"
+                                                            href="{{ route('blog.details', $blog->id) }}"><!-- Poster name Tom
+                                                                                                                                                                                                                                            Black --></a></span>
+                                                </span>
+                                            </div><!-- .entry-meta -->
 
-                                        <h5 class="entry-title">
-                                            <a class="title-link" href="post.html">Top 10 Tips for Your Kitchen
-                                                Interior Design</a>
-                                        </h5>
-                                    </div><!-- .entry-header -->
+                                            <h5 class="entry-title">
+                                                <a class="title-link"
+                                                    href="{{ route('blog.details', $blog->id) }}">{{ $blog->title_english }}</a>
+                                            </h5>
+                                        </div><!-- .entry-header -->
 
-                                    <div class="the-excerpt">
-                                        A faceting effect livens up and...
-                                    </div><!-- .entry-content -->
+                                        <div class="the-excerpt">
+                                            @if (strlen($blog->short_des_eng) > 6)
+                                                @php
+                                                    preg_match('/^([\w\W\s]+?\s+){6}/', $blog->short_des_eng, $matches);
+                                                @endphp
+                                                {!! $matches[0] !!}
+                                            @else
+                                                {!! $blog->short_des_eng !!}
+                                            @endif
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="post-box masonry-post post-item">
-                            <div class="post-inner">
-                                <div class="entry-media post-cat-abs">
-                                    <a href="post.html"><img src="{{ asset('frontend/assets') }}/images/blog/grid2.jpg"
-                                            alt=""></a>
-                                    <div class="post-cat">
-                                        <div class="posted-in"><a href="#">Interior</a></div>
-                                    </div>
-                                </div>
-                                <div class="inner-post">
-                                    <div class="entry-header">
-                                        <div class="entry-meta">
-                                            <span class="posted-on"><a href="#">March 19, 2020</a></span>
-                                            <span class="byline">
-                                                <span class="author vcard"><a class="url fn n" href="#">Tom
-                                                        Black</a></span>
-                                            </span>
-                                        </div><!-- .entry-meta -->
-
-                                        <h5 class="entry-title">
-                                            <a class="title-link" href="post.html">The Golden Ratio Rules for
-                                                Best 2D Sketch</a>
-                                        </h5>
-                                    </div><!-- .entry-header -->
-
-                                    <div class="the-excerpt">
-                                        A faceting effect livens up and...
-                                    </div><!-- .entry-content -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="post-box masonry-post post-item">
-                            <div class="post-inner">
-                                <div class="entry-media post-cat-abs">
-                                    <a href="post.html"><img src="{{ asset('frontend/assets') }}/images/blog/grid3.jpg"
-                                            alt=""></a>
-                                    <div class="post-cat">
-                                        <div class="posted-in"><a href="#">Interior</a></div>
-                                    </div>
-                                </div>
-                                <div class="inner-post">
-                                    <div class="entry-header">
-                                        <div class="entry-meta">
-                                            <span class="posted-on"><a href="#">March 19, 2020</a></span>
-                                            <span class="byline">
-                                                <span class="author vcard"><a class="url fn n" href="#">Tom
-                                                        Black</a></span>
-                                            </span>
-                                        </div><!-- .entry-meta -->
-
-                                        <h5 class="entry-title">
-                                            <a class="title-link" href="post.html">Use Pastel Colors & Natural
-                                                Materials</a>
-                                        </h5>
-                                    </div><!-- .entry-header -->
-
-                                    <div class="the-excerpt">
-                                        A faceting effect livens up and...
-                                    </div><!-- .entry-content -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>

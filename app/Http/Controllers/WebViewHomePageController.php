@@ -24,20 +24,22 @@ class WebViewHomePageController extends Controller
         $services = Service::latest()
             ->limit(3)
             ->get();
-        $blogs = Blog::inRandomOrder()
-            ->limit(2)
+        $blogs = Blog::latest()
+            ->limit(3)
             ->get();
         $about = About::latest()->first();
         $brands = Sponsor::all();
-        $teams = Team::inRandomOrder()
+        $teams = Team::latest()
             ->limit(6)
             ->get();
         $slider = Slider::where('status', '1')
-            ->inRandomOrder()
+            ->latest()
             ->limit(3)
             ->get();
         $projects_don = CounterIcon::latest()->first();
-        $projects = Project::where('status', 1)->get();
+        $projects = Project::where('status', 1)
+            ->limit(6)
+            ->get();
         return view('frontend.home.index', compact('testimonials', 'services', 'about', 'blogs', 'brands', 'teams', 'slider', 'projects_don', 'projects'));
     }
 }
