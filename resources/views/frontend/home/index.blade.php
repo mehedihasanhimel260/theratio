@@ -72,48 +72,22 @@
         <div>
             <div class="container-fluid">
                 <div class="row justify-content-center">
-                    <div class="col-lg-4 col-md-6 px-0">
-                        <div class="cate-lines h-light">
-                            <div class="cate-item">
-                                <a href="#">
-                                    <img src="{{ asset('frontend/assets') }}/images/cate1.jpg" alt="">
-                                </a>
-                                <div class="cate-item_content">
+                    @foreach ($images as $image)
+                        <div class="col-lg-4 col-md-6 px-0">
+                            <div class="cate-lines h-light">
+                                <div class="cate-item">
                                     <a href="#">
-                                        <h2>Office Spaces<span class="number-stroke">01</span></h2>
+                                        <img src="{{ asset($image->image) }}" alt="">
                                     </a>
+                                    <div class="cate-item_content">
+                                        <a href="#">
+                                            <h2>Office Spaces<span class="number-stroke"> {{ $loop->iteration }}</span></h2>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 px-0">
-                        <div class="cate-lines h-light">
-                            <div class="cate-item">
-                                <a href="#">
-                                    <img src="{{ asset('frontend/assets') }}/images/cate2.jpg" alt="">
-                                </a>
-                                <div class="cate-item_content">
-                                    <a href="#">
-                                        <h2>Public Spaces<span class="number-stroke">02</span></h2>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 px-0">
-                        <div class="cate-lines s-dark">
-                            <div class="cate-item">
-                                <a href="#">
-                                    <img src="{{ asset('frontend/assets') }}/images/cate3.jpg" alt="">
-                                </a>
-                                <div class="cate-item_content">
-                                    <a href="#">
-                                        <h2>Residential Spaces<span class="number-stroke">03</span></h2>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -217,56 +191,29 @@
             <div class="projects-grid pf_4_cols style-2 p-info-s2 img-scale w-auto no-gaps mx-0">
                 <div class="grid-sizer"></div>
                 @foreach ($projects as $project)
-                    @if ($loop->iteration == 1 || $loop->iteration == 6 ? 'thumb2x' : '')
-                        <div class="project-item  category-14 thumb2x">
-                            <div class="projects-box">
-                                <div class="projects-thumbnail ">
-                                    <a href="portfolio-standar.html">
-                                        <img src="{{ asset('frontend/assets') }}/images/projects-grid/project-metro1.jpg"
-                                            alt="">
-                                    </a>
-                                    <div class="overlay">
-                                        <h5>Stylish Family Appartment</h5>
-                                        <i class="ot-flaticon-add"></i>
-                                    </div>
-                                </div>
-                                <div class="portfolio-info">
-                                    <div class="portfolio-info-inner">
-                                        <h5><a class="title-link" href="portfolio-standar.html">Stylish Family
-                                                Appartment</a></h5>
-                                        <p class="portfolio-cates"><a href="#">Interior</a></p>
-                                    </div>
-                                    <a class="overlay" href="portfolio-standar.html"></a>
+                    <div
+                        class="project-item  category-14 {{ $loop->iteration == 1 || $loop->iteration == 6 ? 'thumb2x' : '' }}">
+                        <div class="projects-box">
+                            <div class="projects-thumbnail ">
+                                <a href="{{ route('project.details', $project->id) }}">
+                                    <img src="{{ asset($project->main_image) }}" style="height: 476px;" alt="">
+                                </a>
+                                <div class="overlay">
+                                    <h5>{{ $project->title_english }}</h5>
+                                    <i class="ot-flaticon-add"></i>
                                 </div>
                             </div>
-                        </div>
-                    @else
-                        <div class="project-item category-14 ">
-                            <div class="projects-box ">
-                                <div class="projects-thumbnail">
-                                    <a href="portfolio-detail-slider.html">
-                                        <img src="{{ asset('frontend/assets') }}/images/projects-grid/project-metro1.jpg"
-                                            style="height: 476px;" alt="">
-                                    </a>
-                                    <div class="overlay">
-                                        <h5>Minimal Guests House</h5>
-                                        <i class="ot-flaticon-add"></i>
-                                    </div>
+                            <div class="portfolio-info">
+                                <div class="portfolio-info-inner">
+                                    <h5><a class="title-link"
+                                            href="{{ route('project.details', $project->id) }}">{!! $project->des_sm_eng !!}</a>
+                                    </h5>
+                                    <p class="portfolio-cates"><a href="#"> </a></p>
                                 </div>
-                                <div class="portfolio-info">
-                                    <div class="portfolio-info-inner">
-                                        <h5><a class="title-link" href="portfolio-detail-slider.html">Minimal Guests
-                                                House</a></h5>
-                                        <p class="portfolio-cates">
-                                            <a href="#">Decor</a>
-                                            <a href="#">Interior</a>
-                                        </p>
-                                    </div>
-                                    <a class="overlay" href="portfolio-detail-slider.html"></a>
-                                </div>
+                                <a class="overlay" href="{{ route('project.details', $project->id) }}"></a>
                             </div>
                         </div>
-                    @endif
+                    </div>
                 @endforeach
 
             </div>
@@ -289,7 +236,7 @@
                 </div>
             </div>
         </section>
-        <section class="skill-1">
+        {{-- <section class="skill-1">
             <div class="grid-lines grid-lines-vertical">
                 <span class="g-line-vertical line-left color-line-default"></span>
                 <span class="g-line-vertical line-center color-line-default"></span>
@@ -337,7 +284,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
 
         @include('frontend.home.inc.team')
         <section>
@@ -383,7 +330,7 @@
                                                 <span class="byline">
                                                     <span class="author vcard"><a class="url fn n"
                                                             href="{{ route('blog.details', $blog->id) }}"><!-- Poster name Tom
-                                                                                                                                                                                                                                            Black --></a></span>
+                                                                                                                                                                                                                                                                        Black --></a></span>
                                                 </span>
                                             </div><!-- .entry-meta -->
 

@@ -7,6 +7,7 @@ use App\Models\Service;
 use App\Models\About;
 use App\Models\Blog;
 use App\Models\CounterIcon;
+use App\Models\ImageGallery;
 use App\Models\Project;
 use App\Models\Sponsor;
 use App\Models\Team;
@@ -17,6 +18,10 @@ class WebViewHomePageController extends Controller
 {
     public function tech_web_home_index()
     {
+        $images = ImageGallery::where('status', 1)
+            ->latest('id', 'DESC')
+            ->limit(3)
+            ->get();
         $testimonials = Testimonial2::where('status', 1)
             ->latest()
             ->limit(5)
@@ -40,6 +45,6 @@ class WebViewHomePageController extends Controller
         $projects = Project::where('status', 1)
             ->limit(6)
             ->get();
-        return view('frontend.home.index', compact('testimonials', 'services', 'about', 'blogs', 'brands', 'teams', 'slider', 'projects_don', 'projects'));
+        return view('frontend.home.index', compact('testimonials', 'services', 'about', 'blogs', 'brands', 'teams', 'slider', 'projects_don', 'projects', 'images'));
     }
 }
