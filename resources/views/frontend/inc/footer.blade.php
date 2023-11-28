@@ -1,6 +1,8 @@
 @php
     $logos = App\Models\Logo::latest()->first();
-    $projects = \App\Models\Project::where('status', 1)->get();
+    $projects = \App\Models\Project::where('status', 1)
+        ->latest()->take(4)
+        ->get();
     $WebsiteLink = App\Models\WebsiteLink::latest()->first();
     $footer = App\Models\Footer::latest()->first();
 @endphp
@@ -97,6 +99,3 @@
         </div>
     </div>
 </div>
-
-
-
