@@ -1,27 +1,27 @@
 @extends('frontend.layout')
 @section('content')
     <!-- subheader -->
-    <section id="subheader" data-speed="8" data-type="background">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1>Image Gallery</h1>
-                    <ul class="crumb">
+    <div id="content" class="site-content">
+        <div class="page-header dtable text-center header-transparent page-header-contact">
+            <div class="dcell">
+                <div class="container">
+                    <h1 class="page-title">Image Gallary</h1>
+                    <ul id="breadcrumbs" class="breadcrumbs none-style">
                         <li><a href="/">Home</a></li>
-                        <li class="sep">/</li>
-                        <li>Image Gallery</li>
+                        <li class="active">Image Gallary</li>
                     </ul>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+
     <!-- subheader close -->
     <!-- content begin -->
     <div id="content">
         <div class="container">
             <div class="row">
                 @foreach ($images as $image)
-                    <div class="col-lg-4 col-md-6 mb30">
+                    <div class="col-lg-4 col-md-6 mb-3 mt-3">
                         <div class="bloglist item">
                             <div class="post-content">
                                 <div class="post-image">
@@ -35,13 +35,13 @@
                 @endforeach
 
                 <div class="spacer-single"></div>
-
-                <ul class="pagination m-auto">
+                {{-- {{ $images->links() }} --}}
+                {{-- <ul class="pagination m-auto">
                     <li><a href="#">Prev</a></li>
                     <li class="active"><a href="#">1</a></li>
                     <li><a href="#">2</a></li>
                     <li><a href="#">Next</a></li>
-                </ul>
+                </ul> --}}
 
             </div>
 

@@ -244,8 +244,13 @@ class ServiceController extends Controller
     {
         $blog_details = Service::findOrFail($id);
         $blogs = Service::get();
-        // dd($service);
-        return view('frontend.service.index', compact('blog_details', 'blogs'));
+        $previousPost = Service::where('id', '<', $blog_details->id)
+            ->orderBy('id', 'desc')
+            ->first();
+        $nextPost = Service::where('id', '>', $blog_details->id)
+            ->orderBy('id', 'asc')
+            ->first();
+        return view('frontend.service.index', compact('blog_details', 'blogs', 'nextPost', 'previousPost'));
     } //end method---------------------------------------------
 
     public function tech_web_all_fservices()

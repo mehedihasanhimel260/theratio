@@ -1,72 +1,107 @@
 @extends('frontend.layout')
 @section('content')
-    <!-- subheader -->
-    <section id="subheader" data-speed="8" data-type="background">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1>Blog Single</h1>
-                    <ul class="crumb">
-                        <li><a href="index.html">Home</a></li>
-                        <li class="sep">/</li>
-                        <li>Blog Single</li>
+    <div id="content" class="site-content">
+        <div class="page-header dtable text-center header-transparent">
+            <div class="dcell">
+                <div class="container">
+                    <h1 class="page-title">Blog Single</h1>
+                    <ul id="breadcrumbs" class="breadcrumbs none-style">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li class="active">Blog Single</li>
                     </ul>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- subheader close -->
+    </div>
 
-    <!-- content begin -->
-    <div id="content">
+    <div class="entry-content">
         <div class="container">
             <div class="row">
-                <div class="col-md-8">
-                    <div class="blog-read">
-                        <div class="post-content">
-                            <div class="post-image">
-                                <img src="{{ asset($blog_details->main_image) }}" alt="" />
-                            </div>
-
-                            <div class="date-box">
-                                <div class="day">{{ $blog_details->created_at->format('d') }}</div>
-                                <div class="month">{{ $blog_details->created_at->format('M') }}</div>
-                            </div>
-
-                            <div class="post-text">
-                                <h3><a href="#">{{ $blog_details->title_english }}</a></h3>
-                                <p>
-                                    {!! $blog_details->short_des_eng ?? null !!}
-                                    {!! $blog_details->long_des1_eng ?? null !!}
-                                    {!! $blog_details->long_des2_eng ?? null !!}
-                                </p>
+                <div class="content-area col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                    <article class="blog-post post-box">
+                        <div class="entry-media post-cat-abs">
+                            <img src="{{ asset($blog_details->main_image) }}" alt="">
+                            <div class="post-cat">
+                                <div class="posted-in"><a href="#"></a></div>
                             </div>
                         </div>
+                        <div class="inner-post">
+                            <header class="entry-header">
+                                <div class="entry-meta">
+                                    <span class="posted-on">_ <a
+                                            href="#">{{ $blog_details->created_at->format('F d, Y') }}</a></span>
+                                    <span class="byline">_ <a class="url fn n" href="#">
+                                            {{-- Category Name --}}
+                                        </a></span>
+                                    <span class="comment-num">_ <a href="#">
+                                            {{-- Comment count --}}
+                                        </a></span>
+                                </div>
+                                <h3 class="entry-title">{{ $blog_details->title_english }}</h3>
+                            </header>
+                            <div class="entry-summary the-excerpt">
 
-                    </div>
+                                {!! $blog_details->short_des_eng ?? null !!}
+                                {!! $blog_details->long_des1_eng ?? null !!}
+                                {!! $blog_details->long_des2_eng ?? null !!}
+                            </div>
+                            <div class="post-nav clearfix">
+                                <div class="post-prev">
+                                    @if (!empty($previousPost->main_image))
+                                        <a href="{{ route('blog.details', $previousPost->id) }}">
+                                            <div class="thumb-post-prev"><img src="{{ asset($previousPost->main_image) }}"
+                                                    alt=""></div>
+                                            <div class="info-post-prev">
+                                                <h6><span class="title-link">{{ $previousPost->title_english }}</span></h6>
+                                                <span>{{ $previousPost->created_at->format('F d, Y') }}</span>
+                                            </div>
+                                        </a>
+                                    @endif
 
-
+                                </div>
+                                <div class="post-next">
+                                    @if (!empty($nextPost->main_image))
+                                        <a href="{{ route('blog.details', $nextPost->id) }}">
+                                            <div class="thumb-post-next"><img src="{{ asset($nextPost->main_image) }}"
+                                                    alt=""></div>
+                                            <div class="info-post-next">
+                                                <h6><span class="title-link">{{ $nextPost->title_english }}</span>
+                                                </h6>
+                                                <span>{{ $nextPost->created_at->format('F d, Y') }}</span>
+                                            </div>
+                                        </a>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </article>
                 </div>
-
-                <div id="sidebar" class="col-md-4">
-                    <div class="widget widget-post">
-                        <h4>Recent Posts</h4>
-                        <div class="small-border"></div>
-
-                        <ul class="de-bloglist-type-1">
+                <div class="widget-area primary-sidebar col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                    <aside class="widget widget_recent_news">
+                        <h6 class="widget-title">Recent Posts</h6>
+                        <ul class="recent-news clearfix">
                             @foreach ($blogs as $blog)
-                                <li>
-                                    <div class="d-image">
-                                        <img src="{{ asset($blog->main_image) }}" alt="">
+                                <li class="clearfix">
+                                    <div class="thumb">
+                                        <a href="{{ route('blog.details', $blog->id) }}"><img
+                                                src="{{ asset($blog->main_image) }}" alt=""></a>
                                     </div>
-                                    <div class="d-content">
-                                        <a href="{{ route('blog.details', $blog->id) }}">{{ $blog->title_english }}</a>
-                                        <div class="d-date">{{ $blog->created_at->format('F d, Y') }}</div>
+                                    <div class="entry-header">
+                                        <h6><a
+                                                href="{{ route('blog.details', $blog->id) }}">{{ $blog->title_english }}</a>
+                                        </h6>
+                                        <span class="post-on"><span
+                                                class="entry-date">{{ $blog->created_at->format('F d, Y') }}</span></span>
                                     </div>
                                 </li>
                             @endforeach
                         </ul>
-                    </div>
+                    </aside>
+                    <aside class="widget widget_media_image text-center">
+                        <a href="{{ route('contact.us') }}"><img
+                                src="{{ asset('frontend/assets') }}/images/widget-banner.jpg" alt=""></a>
+                    </aside>
                 </div>
             </div>
         </div>

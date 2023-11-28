@@ -108,6 +108,7 @@ class AboutController extends Controller
             ->latest()
             ->limit(5)
             ->get();
-        return view('frontend.about.index', compact('about', 'teams', 'testimonials'));
+        $projects_don = CounterIcon::latest()->first();
+        return view('frontend.about.index', compact('about', 'teams', 'testimonials', 'projects_don'));
     }
 }

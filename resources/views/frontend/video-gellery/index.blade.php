@@ -1,35 +1,34 @@
 @extends('frontend.layout')
 @section('content')
     <!-- subheader -->
-    <section id="subheader" data-speed="8" data-type="background">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1>Video Gallery</h1>
-                    <ul class="crumb">
+    <div id="content" class="site-content">
+        <div class="page-header dtable text-center header-transparent page-header-contact">
+            <div class="dcell">
+                <div class="container">
+                    <h1 class="page-title">Video Gallary</h1>
+                    <ul id="breadcrumbs" class="breadcrumbs none-style">
                         <li><a href="/">Home</a></li>
-                        <li class="sep">/</li>
-                        <li>Video Gallery</li>
+                        <li class="active">Video Gallary</li>
                     </ul>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
     <!-- subheader close -->
     <!-- content begin -->
     <div id="content">
         <div class="container">
             <div class="row">
                 @foreach ($videos as $video)
-                    <div class="col-lg-4 col-md-6 mb30">
+                    <div class="col-lg-4 col-md-6 mb-3 mt-3">
                         <div class="bloglist item">
                             <div class="post-content">
                                 <div class="post-image">
-                                    <div class="iframe-wrapper embed-responsive">
-                                        <iframe
-                                            src="https://www.youtube.com/embed/{{ $video->video_link }}?rel=0?version=3&autoplay=1&controls=0&&showinfo=0&loop=1"
-                                            frameborder="0"></iframe>
-                                    </div>
+                                    <iframe width="" height=""
+                                        src="https://www.youtube.com/embed/{{ $video->video_link }}" frameborder="0"
+                                        style="border-radius:15px"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        allowfullscreen></iframe>
                                 </div>
                             </div>
                         </div>
@@ -37,7 +36,7 @@
                 @endforeach
 
                 <div class="spacer-single"></div>
-
+                {{-- 
                 <ul class="pagination m-auto">
                     <li><a href="#">Prev</a></li>
                     <li class="active"><a href="#">1</a></li>
@@ -46,7 +45,7 @@
                     <li><a href="#">4</a></li>
                     <li><a href="#">5</a></li>
                     <li><a href="#">Next</a></li>
-                </ul>
+                </ul> --}}
 
             </div>
 

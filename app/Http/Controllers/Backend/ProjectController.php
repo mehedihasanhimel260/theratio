@@ -212,7 +212,7 @@ class ProjectController extends Controller
         @unlink($service_image->banner_image);
         @unlink($service_image->detais_image_1);
         @unlink($service_image->detais_image_2);
-        @unlink($service_image->detais_image_3); 
+        @unlink($service_image->detais_image_3);
 
         Project::findOrFail($id)->delete();
         $notification = [
@@ -228,6 +228,12 @@ class ProjectController extends Controller
     {
         $blog_details = Project::findOrFail($id);
         $blogs = Project::get();
-        return view('frontend.project.index', compact('blog_details', 'blogs'));
+        $previousPost = Project::where('id', '<', $blog_details->id)
+            ->orderBy('id', 'desc')
+            ->first();
+        $nextPost = Project::where('id', '>', $blog_details->id)
+            ->orderBy('id', 'asc')
+            ->first();
+        return view('frontend.project.index', compact('blog_details', 'blogs', 'nextPost', 'previousPost'));
     }
 }
