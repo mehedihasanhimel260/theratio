@@ -15,7 +15,7 @@
                 <li>
                     <a href="{{ route('dashboard') }}" data-bs-toggle="collapse">
                         <i class="mdi mdi-view-dashboard-outline"></i>
-                        <span class="badge bg-success rounded-pill float-end">4</span>
+                        <span class="badge bg-success rounded-pill float-end"></span>
                         <span> Dashboards </span>
                     </a>
 

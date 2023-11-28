@@ -1,7 +1,8 @@
 @php
     $logos = App\Models\Logo::latest()->first();
     $projects = \App\Models\Project::where('status', 1)
-        ->latest()->take(4)
+        ->latest()
+        ->take(4)
         ->get();
     $WebsiteLink = App\Models\WebsiteLink::latest()->first();
     $footer = App\Models\Footer::latest()->first();
@@ -88,11 +89,14 @@
             <div class="col-lg-5 col-md-12 align-self-center">
                 <ul class="icon-list-items inline-items justify-content-lg-end">
                     <li class="icon-list-item inline-item">
-                        <a href="#"><span class="icon-list-text">Terms of use</span></a>
+                        <a href="#"><span class="icon-list-text">
+                                {{-- Terms of use --}}
+                            </span></a>
                     </li>
                     <li class="icon-list-item inline-item">
-                        <a href="#"><span class="icon-list-text">Privacy Environmental
-                                Policy</span></a>
+                        <a href="#"><span class="icon-list-text">
+                                {{-- Privacy Environmental Policy --}}
+                            </span></a>
                     </li>
                 </ul>
             </div>
